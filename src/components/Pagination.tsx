@@ -40,7 +40,7 @@ const Pagination: React.FC<PaginationProps> = ({ currentPage, totalPages, onPage
   if (totalPages <= 1) return null;
 
   return (
-    <div className="flex items-center justify-center space-x-2 mt-8">
+    <div className="flex items-center justify-end space-x-2 mt-8">
       <Button
         size="sm"
         variant="secondary"

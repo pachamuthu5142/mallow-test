@@ -117,7 +117,7 @@ const Users: React.FC = () => {
                 )}
               </div>
               
-              <Button onClick={handleCreateUser}>
+              <Button onClick={handleCreateUser} className='flex items-center space-x-2'>
                 <Plus size={16} className="mr-2" />
                 Create User
               </Button>
@@ -172,7 +172,7 @@ const Users: React.FC = () => {
           {/* Users List */}
           {filteredUsers.length > 0 && (
             <>
-              <div className="bg-white shadow rounded-lg overflow-hidden">
+              <div className="rounded-lg overflow-hidden">
                 {viewMode === 'table' ? (
                   <UserTable
                     users={currentUsers}

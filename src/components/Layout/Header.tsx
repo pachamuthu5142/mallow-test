@@ -14,21 +14,16 @@ const Header: React.FC = () => {
   return (
     <header className="bg-gray-800 text-white shadow-lg">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between items-center h-16">
-          <div className="flex items-center">
-            <h1 className="text-xl font-semibold">User Management</h1>
-          </div>
-          
+        <div className="flex justify-end items-center h-16">
           <div className="flex items-center space-x-4">
             <span className="text-sm text-gray-300">Elon Musk</span>
             <Button
               variant="secondary"
               size="sm"
               onClick={handleLogout}
-              className="flex items-center space-x-2"
+              className="flex items-center space-x-2 bg-red-600 hover:bg-red-700 text-white"
             >
-              <LogOut size={16} />
-              <span>Logout</span>
+              <LogOut size={16} />  
             </Button>
           </div>
         </div>

@@ -1,7 +1,7 @@
-import React from 'react';
-import { CreditCard as Edit, Trash2 } from 'lucide-react';
-import { User } from '../types';
-import Button from './ui/Button';
+import React from "react";
+import { CreditCard as Edit, Trash2 } from "lucide-react";
+import { User } from "../types";
+import Button from "./ui/Button";
 
 interface UserTableProps {
   users: User[];
@@ -15,6 +15,9 @@ const UserTable: React.FC<UserTableProps> = ({ users, onEdit, onDelete }) => {
       <table className="min-w-full bg-white">
         <thead className="bg-gray-50">
           <tr>
+            <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+             Profile
+            </th>
             <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
               Email
             </th>
@@ -32,19 +35,19 @@ const UserTable: React.FC<UserTableProps> = ({ users, onEdit, onDelete }) => {
         <tbody className="bg-white divide-y divide-gray-200">
           {users.map((user) => (
             <tr key={user.id} className="hover:bg-gray-50">
+              <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
+                <img
+                  className="h-10 w-10 rounded-full mr-4"
+                  src={user.avatar}
+                  alt={`${user.first_name} ${user.last_name}`}
+                  onError={(e) => {
+                    e.currentTarget.src = `https://ui-avatars.com/api/?name=${user.first_name}+${user.last_name}&background=3b82f6&color=fff`;
+                  }}
+                />
+              </td>
               <td className="px-6 py-4 whitespace-nowrap">
-                <div className="flex items-center">
-                  <img
-                    className="h-10 w-10 rounded-full mr-4"
-                    src={user.avatar}
-                    alt={`${user.first_name} ${user.last_name}`}
-                    onError={(e) => {
-                      e.currentTarget.src = `https://ui-avatars.com/api/?name=${user.first_name}+${user.last_name}&background=3b82f6&color=fff`;
-                    }}
-                  />
-                  <div className="text-sm font-medium text-blue-600 hover:text-blue-800 cursor-pointer transition-colors duration-200">
-                    {user.email}
-                  </div>
+                <div className="text-sm font-medium text-blue-600 hover:text-blue-800 cursor-pointer transition-colors duration-200">
+                  {user.email}
                 </div>
               </td>
               <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">

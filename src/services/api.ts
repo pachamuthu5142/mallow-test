@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { LoginData, AuthResponse, UsersResponse, CreateUserData, UpdateUserData, User } from '../types';
 
-const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || 'https://reqres.in/api';
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL ;
 const API_KEY = import.meta.env.VITE_API_KEY;
 
 const api = axios.create({

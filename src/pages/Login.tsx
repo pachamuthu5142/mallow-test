@@ -1,24 +1,26 @@
-import React, { useState, useEffect } from 'react';
-import { useNavigate, useLocation } from 'react-router-dom';
-import { useAppDispatch, useAppSelector } from '../hooks/redux';
-import { loginUser, clearError } from '../store/slices/authSlice';
-import { User } from 'lucide-react';
-import Input from '../components/ui/Input';
-import Button from '../components/ui/Button';
+import React, { useState, useEffect } from "react";
+import { useNavigate, useLocation } from "react-router-dom";
+import { useAppDispatch, useAppSelector } from "../hooks/redux";
+import { loginUser, clearError } from "../store/slices/authSlice";
+import { Lock, User } from "lucide-react";
+import Input from "../components/ui/Input";
+import Button from "../components/ui/Button";
 
 const Login: React.FC = () => {
   const [formData, setFormData] = useState({
-    email: 'eve.holt@reqres.in',
-    password: 'cityslicka',
+    email: "eve.holt@reqres.in",
+    password: "cityslicka",
   });
   const [rememberMe, setRememberMe] = useState(true);
-  
-  const { loading, error, isAuthenticated } = useAppSelector(state => state.auth);
+
+  const { loading, error, isAuthenticated } = useAppSelector(
+    (state) => state.auth
+  );
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
   const location = useLocation();
-  
-  const from = location.state?.from?.pathname || '/users';
+
+  const from = location.state?.from?.pathname || "/users";
 
   useEffect(() => {
     if (isAuthenticated) {
@@ -37,7 +39,7 @@ const Login: React.FC = () => {
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
-    setFormData(prev => ({ ...prev, [name]: value }));
+    setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
   return (
@@ -53,7 +55,7 @@ const Login: React.FC = () => {
           </div>
 
           <form onSubmit={handleSubmit} className="space-y-6">
-            <div>
+            <div className="relative">
               <Input
                 name="email"
                 type="email"
@@ -63,7 +65,7 @@ const Login: React.FC = () => {
                 className="pl-10"
                 required
               />
-              <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+              <div className="absolute inset-y-4 pl-3 flex items-center pointer-events-none">
                 <User className="h-5 w-5 text-gray-400" />
               </div>
             </div>
@@ -76,7 +78,11 @@ const Login: React.FC = () => {
                 onChange={handleChange}
                 placeholder="••••••••••"
                 required
+                className="pl-10"
               />
+              <div className="absolute inset-y-4 pl-3 flex items-center pointer-events-none">
+                <Lock className="h-5 w-5 text-gray-400" />
+              </div>
             </div>
 
             <div className="flex items-center">
@@ -87,7 +93,10 @@ const Login: React.FC = () => {
                 onChange={(e) => setRememberMe(e.target.checked)}
                 className="h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300 rounded"
               />
-              <label htmlFor="remember-me" className="ml-3 text-sm text-gray-600">
+              <label
+                htmlFor="remember-me"
+                className="ml-3 text-sm text-gray-600"
+              >
                 Remember me
               </label>
             </div>
@@ -106,12 +115,6 @@ const Login: React.FC = () => {
               Log in
             </Button>
           </form>
-
-          <div className="mt-6 text-center">
-            <p className="text-sm text-gray-600">
-              Default credentials are pre-filled for testing
-            </p>
-          </div>
         </div>
       </div>
     </div>
