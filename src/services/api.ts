@@ -1,7 +1,8 @@
 import axios from 'axios';
 import { LoginData, AuthResponse, UsersResponse, CreateUserData, UpdateUserData, User } from '../types';
 
-const API_BASE_URL = 'https://reqres.in/api';
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || 'https://reqres.in/api';
+const API_KEY = import.meta.env.VITE_API_KEY;
 
 const api = axios.create({
   baseURL: API_BASE_URL,
@@ -13,6 +14,12 @@ api.interceptors.request.use((config) => {
   if (token) {
     config.headers.Authorization = `Bearer ${token}`;
   }
+  
+  // Add API key if available
+  if (API_KEY) {
+    config.headers['X-API-Key'] = API_KEY;
+  }
+  
   return config;
 });
 
