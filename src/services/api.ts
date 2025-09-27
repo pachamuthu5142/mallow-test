@@ -8,14 +8,12 @@ const api = axios.create({
   baseURL: API_BASE_URL,
 });
 
-// Add token to requests if available
 api.interceptors.request.use((config) => {
   const token = localStorage.getItem('auth_token');
   if (token) {
     config.headers.Authorization = `Bearer ${token}`;
   }
   
-  // Add API key if available
   if (API_KEY) {
     config.headers['X-API-Key'] = API_KEY;
   }
