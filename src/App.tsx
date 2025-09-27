@@ -6,7 +6,7 @@ import Login from './pages/Login';
 import Users from './pages/Users';
 import PrivateRoute from './components/PrivateRoute';
 
-function App() {
+const App = () => {
   return (
     <Provider store={store}>
       <Router>
