@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { LoginData, AuthResponse, UsersResponse, CreateUserData, UpdateUserData, User } from '../types';
+import { LoginData, AuthResponse, UsersResponse, CreateUserData, User } from '../types';
 
 const API_BASE_URL = import.meta.env.VITE_API_BASE_URL ;
 const API_KEY = import.meta.env.VITE_API_KEY;
@@ -41,7 +41,7 @@ export const usersApi = {
     return response.data;
   },
   
-  updateUser: async (userId: number, userData: UpdateUserData): Promise<User> => {
+  updateUser: async (userId: number, userData: CreateUserData): Promise<User> => {
     const response = await api.put<User>(`/users/${userId}`, userData);
     return response.data;
   },

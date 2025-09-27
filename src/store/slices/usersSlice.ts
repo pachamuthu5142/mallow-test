@@ -52,7 +52,7 @@ export const updateUser = createAsyncThunk(
   'users/updateUser',
   async ({ id, ...userData }: UpdateUserData, { rejectWithValue }) => {
     try {
-      const response = await usersApi.updateUser(id, userData);
+      await usersApi.updateUser(id, userData);
       return { id, ...userData };
     } catch (error: any) {
       return rejectWithValue(error.response?.data?.error || 'Failed to update user');
